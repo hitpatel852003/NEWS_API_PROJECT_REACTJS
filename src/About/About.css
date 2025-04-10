@@ -1,0 +1,10 @@
+.featurette{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+h2{
+    color: brown;
+}
