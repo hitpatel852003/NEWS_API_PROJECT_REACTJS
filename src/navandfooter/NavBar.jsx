@@ -75,7 +75,7 @@ function NavBar() {
                                     <NavLink to="/contact" className='nav-link'>Contact</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to="#" className='nav-link'>Github</NavLink>
+                                    <NavLink to="/github" className='nav-link'>Github</NavLink>
                                 </li>
                             </ul>
                         </div>

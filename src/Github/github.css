@@ -1,0 +1,16 @@
+.github-card {
+    text-align: center;
+    margin: 16px;
+    background-color: #4b5563; /* Tailwind's gray-600 */
+    color: white;
+    padding: 16px;
+    font-size: 24px; /* Tailwind's text-3xl is roughly 1.875rem = 30px */
+    border-radius: 8px;
+  }
+  
+  .github-card img {
+    width: 300px;
+    margin-top: 12px;
+    border-radius: 8px;
+  }
+  
