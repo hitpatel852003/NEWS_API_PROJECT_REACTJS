@@ -6,12 +6,16 @@ import { useState } from 'react'
 import './navbar.css'
 import Login from '../components/Login';
 import UseContextProvider from '../usecontext/UseContextProvider';
+import ChangeSwitch from '../changeSwitch/ChangeSwitch'
+import { useSelector } from 'react-redux';
 
 
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [mode, setmode] = useState();
+    const theme = useSelector((state) => state.theme.mode);
     // const { user } = useContext(UserContext)
     // if (!user) return <div>Your are not login please login</div>
 
@@ -40,7 +44,7 @@ function NavBar() {
                 </div>
             </div> */}
 
-            <nav className="navbar navbar-expand-lg navbar-brown bg-white sticky-top">
+            <nav className={`navbar navbar-expand-lg navbar-brown bg-${theme === "dark" ? "light" : "dark"} sticky-top`}>
                 <div className="container-fluid">
                     <h1><i>NbyT</i></h1>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,10 +61,10 @@ function NavBar() {
                                     <NavLink to="/about" className='nav-link' > About</NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a className="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         NewsTypes
                                     </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <ul className={`dropdown-menu bg-${theme === "dark" ? "light" : "dark"}`}  aria-labelledby="navbarDropdown">
                                         <li><NavLink className="dropdown-item" to="/General">General</NavLink></li>
                                         <li><NavLink className="dropdown-item" to="/Business">Business</NavLink></li>
                                         <li><NavLink className="dropdown-item" to="/Entertainment">Entertainment</NavLink></li>
@@ -79,19 +83,12 @@ function NavBar() {
                                 </li>
                             </ul>
                         </div>
-                        
+                        <ChangeSwitch></ChangeSwitch>
                     </div>
                 </div>
             </nav>
-
-
-            
-
-
-
         </>
     )
-
 }
 
 export default NavBar

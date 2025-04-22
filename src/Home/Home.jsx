@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import News from './News'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Home(props) {
+    const theme = useSelector((state) => state.theme.mode)
     // const [value, setValue] = useState();
     const [articles, setArticles] = useState([]);
     const [imagearticles1, setImagearticles1] = useState([]);
@@ -26,7 +28,6 @@ function Home(props) {
         // console.log("this is a image 1",data.articles[1].urlToImage);
         setImagearticles3(data.articles[2].urlToImage);
         // console.log("this is a image 2",data.articles[2].urlToImage);
-
         setTotalResult(data.totalResults);
         // setPagesize(10);
 
@@ -74,7 +75,7 @@ function Home(props) {
     }
 
     return (
-        <div>
+        <div className={`bg-${theme === "dark" ? "light" : "dark"}`}>
             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -86,7 +87,6 @@ function Home(props) {
                     <div className="carousel-item">
                         <img src={imagearticles1.urlToImage ? imagearticles1.urlToImage : "https://picsum.photos/1400/800?newsphotos"} alt="News Image" className="d-block w-100" height={'580px'} />
                     </div>
-
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -117,7 +117,6 @@ function Home(props) {
                     Previous</button>
                 <button type="button" disabled={page + 1 > Math.ceil(totalResults)} className="btn btn-brown" onClick={handleNextClick}>Next &rarr;</button>
             </div>
-            <hr />
             {/* <div className="container">
                 <div className="card" style={{width: "16rem"}}>
                     <img src={articles.urlToImage} className="card-img-top" alt="..."/>

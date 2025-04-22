@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import './footer.css'
+import { useSelector } from 'react-redux';
 
 function Footer() {
+  const theme = useSelector((state) => state.theme.mode)
   return (
-    <div>
+    <div className={`bg-${theme === "dark" ? "light" : "dark"}`}>
       <div className="container">
         <footer className="py-5">
           <div className="row">

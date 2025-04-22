@@ -1,10 +1,12 @@
 import React from 'react'
 import './todolist.css'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 function Todolist() {
   const [input, setInput] = useState(''); // this is input value
   const [submit, setSubmit] = useState([]); //this button
+  const theme = useSelector((state) => state.theme.mode);
 
   function handleChange(e) {
     setInput(e.target.value);
@@ -27,8 +29,8 @@ function Todolist() {
     <div>
       <h1>Send your Feedback</h1>
       <br />
-      <div className="todolist">
-        <input type="text" id='input' placeholder='enter your message' onChange={handleChange} />
+      <div className={`todolist`}> 
+        <input type="text" id='input' placeholder='enter your message' onChange={handleChange} className={`bg-${theme === "dark" ? "light" : "dark"}`}/>
         <button id='button' onClick={handleClick}>Add</button>
       </div>
       <div className="todolist">

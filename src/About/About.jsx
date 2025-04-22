@@ -1,10 +1,15 @@
 import React from 'react'
 import './About.css'
 import Todolist from './Todolist'
+import { useSelector } from 'react-redux';
 
 function About() {
+  const theme = useSelector((state) => state.theme.mode);
   return (
-    <div>
+    <div className={`bg-${theme === "dark" ? "light" : "dark"}`}>
+      <div>
+        <h1 className='text-align-center p-5'>About</h1>
+      </div>
       <div className="container">
         <div className="row featurette">
           <div className="col-md-7">
